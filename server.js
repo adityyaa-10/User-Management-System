@@ -6,12 +6,18 @@ const bodyparser = require('body-parser')
 
 const path = require('path')
 
+const connectDB = require('./server/database/connection')
+
 dotenv.config({ path: 'config.env' })
 const PORT = process.env.PORT || 8080
 
 // log modules
 // morgan module allows us to log a request on the console whenever a request is made.
 app.use(morgan('tiny'))
+
+//MongoDB connection
+
+connectDB()
 
 // Parse request to body-parser
 app.use(bodyparser.urlencoded({ extended: true }))
