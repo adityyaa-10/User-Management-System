@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Button, FormControl, FormGroup, Input, InputLabel, Typography, styled } from '@mui/material'
-
+import { addUser } from '../service/api'
 
 const Container = styled(FormGroup)`
     width: 50%;
@@ -16,9 +16,7 @@ const defaultValue = {
     phone: ''
 }
 
-const addUserDetails = () => {
 
-}
 
 const AddUser = () => {
     const [user, setUser] = useState(defaultValue)
@@ -26,6 +24,10 @@ const AddUser = () => {
     const onValueChage = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
         console.log(user);
+    }
+
+    const addUserDetails = async () => {
+        await addUser(user);
     }
 
     return (
