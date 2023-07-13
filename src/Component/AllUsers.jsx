@@ -1,10 +1,20 @@
-import React from 'react'
+import { Table, TableRow, TableHead, TableCell } from '@mui/material'
 
 const AllUsers = () => {
     return (
-        <div>
-            All Users
-        </div>
+        <>
+            <Table>
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Name</TableCell>
+                        <TableCell>Username</TableCell>
+                        <TableCell>Email</TableCell>
+                        <TableCell>Phone</TableCell>
+
+                    </TableRow>
+                </TableHead>
+            </Table>
+        </>
     )
 }
 

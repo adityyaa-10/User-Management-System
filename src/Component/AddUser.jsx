@@ -5,10 +5,11 @@ import { addUser } from '../service/api'
 const Container = styled(FormGroup)`
     width: 50%;
     margin: 5% auto 0 auto;  
-    & > div {
-        margin-top: 40px;
-    }
 `
+const EachInput = styled(FormControl)`
+    margin-top: 50px;
+`
+
 const defaultValue = {
     name: '',
     username: '',
@@ -34,33 +35,33 @@ const AddUser = () => {
         <Container>
             <FormGroup>
                 <Typography variant='h4'>Add User</Typography>
-                <FormControl>
+                <EachInput>
                     <InputLabel>
                         Name
                     </InputLabel>
                     <Input onChange={(e) => onValueChage(e)} name='name' />
-                </FormControl>
-                <FormControl>
+                </EachInput>
+                <EachInput>
                     <InputLabel>
                         Usename
                     </InputLabel>
                     <Input onChange={(e) => onValueChage(e)} name='username' />
-                </FormControl>
-                <FormControl>
+                </EachInput>
+                <EachInput>
                     <InputLabel>
                         Email
                     </InputLabel>
                     <Input onChange={(e) => onValueChage(e)} name='email' />
-                </FormControl>
-                <FormControl>
+                </EachInput>
+                <EachInput>
                     <InputLabel>
                         Phone
                     </InputLabel>
                     <Input onChange={(e) => onValueChage(e)} name='phone' />
-                </FormControl>
-                <FormControl>
+                </EachInput>
+                <EachInput>
                     <Button onClick={addUserDetails} variant="contained">Add User</Button>
-                </FormControl>
+                </EachInput>
             </FormGroup>
         </Container>
     )

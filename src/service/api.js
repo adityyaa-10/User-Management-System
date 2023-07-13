@@ -9,3 +9,4 @@ export const addUser = async (data) => {
         console.log(`Error while calling Add User API`, err);
     }
 }
+
