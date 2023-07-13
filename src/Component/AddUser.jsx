@@ -21,7 +21,7 @@ const EachInput = styled(FormControl)`
 
 const AddUser = () => {
     const [user, setUser] = useState(initialValue);
-    const { name, username, email, phone } = user;
+    // const { name, username, email, phone } = user;
 
     let navigate = useNavigate();
 
@@ -31,27 +31,27 @@ const AddUser = () => {
 
     const addUserDetails = async () => {
         await addUser(user);
-        navigate('/all');
+        navigate('/');
     }
 
     return (
         <Container>
             <Typography variant="h4">Add User</Typography>
             <EachInput>
-                <InputLabel htmlFor="my-input">Name</InputLabel>
-                <Input onChange={(e) => onValueChange(e)} name='name' value={name} id="my-input" />
+                <InputLabel>Name</InputLabel>
+                <Input onChange={(e) => onValueChange(e)} name='name' />
             </EachInput>
             <EachInput>
-                <InputLabel htmlFor="my-input">Username</InputLabel>
-                <Input onChange={(e) => onValueChange(e)} name='username' value={username} id="my-input" />
+                <InputLabel>Username</InputLabel>
+                <Input onChange={(e) => onValueChange(e)} name='username' />
             </EachInput>
             <EachInput>
-                <InputLabel htmlFor="my-input">Email</InputLabel>
-                <Input onChange={(e) => onValueChange(e)} name='email' value={email} id="my-input" />
+                <InputLabel>Email</InputLabel>
+                <Input onChange={(e) => onValueChange(e)} name='email' />
             </EachInput>
             <EachInput>
-                <InputLabel htmlFor="my-input">Phone</InputLabel>
-                <Input onChange={(e) => onValueChange(e)} name='phone' value={phone} id="my-input" />
+                <InputLabel>Phone</InputLabel>
+                <Input onChange={(e) => onValueChange(e)} name='phone' />
             </EachInput>
             <EachInput>
                 <Button variant="contained" color="primary" onClick={() => addUserDetails()}>Add User</Button>

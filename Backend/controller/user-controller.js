@@ -22,3 +22,25 @@ export const addUser = async (request, response) => {
         response.status(409).json({ message: error.message });
     }
 }
+
+//Get each User
+export const getUser = async (request, response) => {
+    try {
+        const user = await User.findById(request.params.id)
+        response.status(200).json(user);
+    } catch (error) {
+        response.status(404).json({ message: error.message })
+    }
+}
+
+export const editUser = async (request, response) => {
+    let user = request.body;
+    const editUser = new User(user);
+
+    try {
+        await user.updateOne({ _id: request.params.id }, editUser);
+        response.status(201).json(editUser)
+    } catch (err) {
+        response.status(409).json({ message: err.message })
+    }
+}
