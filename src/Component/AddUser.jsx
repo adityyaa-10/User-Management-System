@@ -1,70 +1,63 @@
-import { useState } from 'react'
-import { Button, FormControl, FormGroup, Input, InputLabel, Typography, styled } from '@mui/material'
-import { addUser } from '../service/api'
+import { useState } from 'react';
+import { FormGroup, FormControl, InputLabel, Input, Button, styled, Typography } from '@mui/material';
+import { addUser } from '../service/api';
+import { useNavigate } from 'react-router-dom';
 
-const Container = styled(FormGroup)`
-    width: 50%;
-    margin: 5% auto 0 auto;  
-`
-const EachInput = styled(FormControl)`
-    margin-top: 50px;
-`
-
-const defaultValue = {
+const initialValue = {
     name: '',
     username: '',
     email: '',
     phone: ''
 }
 
+const Container = styled(FormGroup)`
+    width: 50%;
+    margin: 5% 0 0 25%;
+`;
 
+const EachInput = styled(FormControl)`
+        margin-top: 50px;
+`
 
 const AddUser = () => {
-    const [user, setUser] = useState(defaultValue)
+    const [user, setUser] = useState(initialValue);
+    const { name, username, email, phone } = user;
 
-    const onValueChage = (e) => {
-        setUser({ ...user, [e.target.name]: e.target.value });
-        console.log(user);
+    let navigate = useNavigate();
+
+    const onValueChange = (e) => {
+        setUser({ ...user, [e.target.name]: e.target.value })
     }
 
     const addUserDetails = async () => {
         await addUser(user);
+        navigate('/all');
     }
 
     return (
         <Container>
-            <FormGroup>
-                <Typography variant='h4'>Add User</Typography>
-                <EachInput>
-                    <InputLabel>
-                        Name
-                    </InputLabel>
-                    <Input onChange={(e) => onValueChage(e)} name='name' />
-                </EachInput>
-                <EachInput>
-                    <InputLabel>
-                        Usename
-                    </InputLabel>
-                    <Input onChange={(e) => onValueChage(e)} name='username' />
-                </EachInput>
-                <EachInput>
-                    <InputLabel>
-                        Email
-                    </InputLabel>
-                    <Input onChange={(e) => onValueChage(e)} name='email' />
-                </EachInput>
-                <EachInput>
-                    <InputLabel>
-                        Phone
-                    </InputLabel>
-                    <Input onChange={(e) => onValueChage(e)} name='phone' />
-                </EachInput>
-                <EachInput>
-                    <Button onClick={addUserDetails} variant="contained">Add User</Button>
-                </EachInput>
-            </FormGroup>
+            <Typography variant="h4">Add User</Typography>
+            <EachInput>
+                <InputLabel htmlFor="my-input">Name</InputLabel>
+                <Input onChange={(e) => onValueChange(e)} name='name' value={name} id="my-input" />
+            </EachInput>
+            <EachInput>
+                <InputLabel htmlFor="my-input">Username</InputLabel>
+                <Input onChange={(e) => onValueChange(e)} name='username' value={username} id="my-input" />
+            </EachInput>
+            <EachInput>
+                <InputLabel htmlFor="my-input">Email</InputLabel>
+                <Input onChange={(e) => onValueChange(e)} name='email' value={email} id="my-input" />
+            </EachInput>
+            <EachInput>
+                <InputLabel htmlFor="my-input">Phone</InputLabel>
+                <Input onChange={(e) => onValueChange(e)} name='phone' value={phone} id="my-input" />
+            </EachInput>
+            <EachInput>
+                <Button variant="contained" color="primary" onClick={() => addUserDetails()}>Add User</Button>
+            </EachInput>
         </Container>
     )
 }
 
-export default AddUser
+export default AddUser;
